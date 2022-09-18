@@ -74,10 +74,10 @@ public class TechJobs {
     private static String getUserSelection(String menuHeader, HashMap<String, String> choices) {
 
         int choiceIdx = -1;
-        Boolean validChoice = false;
+        boolean validChoice = false;
         String[] choiceKeys = new String[choices.size()];
 
-        // Put the choices in an ordered structure so we can
+        // Put the choices in an ordered structure, so we can
         // associate an integer with each one
         int i = 0;
         for (String choiceKey : choices.keySet()) {
@@ -119,6 +119,10 @@ public class TechJobs {
 
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
+        if (someJobs.isEmpty()) {
+            System.out.print("No Results");
+        }
+
         try {
             for (HashMap<String, String> someJob : someJobs) {
                 System.out.println("\n*****");
@@ -129,7 +133,7 @@ public class TechJobs {
             }
         }
         catch (Exception e) {
-            System.out.println("No Results.");
+            System.out.print("No Results");
         }
     }
 }

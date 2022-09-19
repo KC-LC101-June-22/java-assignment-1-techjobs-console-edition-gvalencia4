@@ -73,8 +73,7 @@ public class JobData {
         for (HashMap<String, String> row : allJobs) {
 
             String aValue = row.get(column);
-
-            if (aValue.contains(value)) {
+            if (aValue.toLowerCase().contains(value.toLowerCase())) {
                 jobs.add(row);
             }
         }
@@ -93,20 +92,19 @@ public class JobData {
         // load data, if not already loaded
         loadData();
 
-        // TODO - findByValue
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
 
         for (HashMap<String, String> row : allJobs) {
 
             // increment through all the columns
             // does all the data share the same columns?
-            // continues to prevent repeat
+            // breaks to prevent repeat
 
             for (String column : row.keySet()) {
                 String aValue = row.get(column);
-
-                if (aValue.contains(value)) {
+                if (aValue.toLowerCase().contains(value.toLowerCase())) {
                     jobs.add(row);
+                    break;
                 }
             }
         }
@@ -130,7 +128,7 @@ public class JobData {
             Reader in = new FileReader(DATA_FILE);
             CSVParser parser = CSVFormat.RFC4180.withFirstRecordAsHeader().parse(in);
             List<CSVRecord> records = parser.getRecords();
-            Integer numberOfColumns = records.get(0).size();
+            int numberOfColumns = records.get(0).size();
             String[] headers = parser.getHeaderMap().keySet().toArray(new String[numberOfColumns]);
 
             allJobs = new ArrayList<>();

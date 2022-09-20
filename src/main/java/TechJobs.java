@@ -35,9 +35,9 @@ public class TechJobs {
             if (actionChoice == null) {
                 break;
             } else if (actionChoice.equals("list")) {
-
                 String columnChoice = getUserSelection("List", columnChoices);
 
+                assert columnChoice != null;
                 if (columnChoice.equals("all")) {
                     printJobs(JobData.findAll());
                 } else {
@@ -61,6 +61,7 @@ public class TechJobs {
                 System.out.println("\nSearch term:");
                 String searchTerm = in.nextLine();
 
+                assert searchField != null;
                 if (searchField.equals("all")) {
                     printJobs(JobData.findByValue(searchTerm));
                 } else {

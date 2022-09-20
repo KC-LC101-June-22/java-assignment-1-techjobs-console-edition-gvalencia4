@@ -92,14 +92,14 @@ public class JobData {
         // load data, if not already loaded
         loadData();
 
+        // Store found jobs in an ArrayList
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
 
+        // Increment through all the columns
+        // Does all the data share the same columns? If not, lets handle it.
+        // Breaks inner loop if a job is added to prevent repeats
+
         for (HashMap<String, String> row : allJobs) {
-
-            // increment through all the columns
-            // does all the data share the same columns?
-            // breaks to prevent repeat
-
             for (String column : row.keySet()) {
                 String aValue = row.get(column);
                 if (aValue.toLowerCase().contains(value.toLowerCase())) {

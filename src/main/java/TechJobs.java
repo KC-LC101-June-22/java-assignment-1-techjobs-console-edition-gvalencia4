@@ -120,6 +120,10 @@ public class TechJobs {
 
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
+
+        // Print "No Results" if no results are found or if there is an error
+        // Use entrySet() to print all the key/value pairs of each HashMap
+
         if (someJobs.isEmpty()) {
             System.out.print("No Results");
         }
